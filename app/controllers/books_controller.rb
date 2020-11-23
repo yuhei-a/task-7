@@ -2,16 +2,16 @@ class BooksController < ApplicationController
   before_action :ensure_correct_user, only: %i[edit update destroy]
 
   def show
-    @books = Book.find(params[:id])
-    @user = @books.user
-    @book = Book.new
+    @book = Book.find(params[:id])
+    @user = @book.user
+    @booknew = Book.new
     @book_comment = BookComment.new
   end
 
   def index
-    @books = Book.all
+    @book = Book.all
     @user = current_user
-    @book = Book.new
+    @booknew = Book.new
   end
 
   def create
