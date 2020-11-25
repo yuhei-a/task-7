@@ -19,6 +19,31 @@
   </div>
 
   <div class="field">
+    <%= f.label :postcode, '郵便番号' %><br />
+    <%= f.text_field :postcode, autocomplete: 'postcode', class: 'postcode' %>
+  </div>
+
+   <div class="field">
+    <%= f.label :prefecture_name, '都道府県' %><br />
+    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, {promit: '選択してください'} %>
+  </div>
+
+   <div class="field">
+    <%= f.label :address_city, '市町村' %><br />
+    <%= f.text_field :address_city, autocomplete: "address_city" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_street, '番地' %><br />
+    <%= f.text_field :address_street, autocomplete: "address_street" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_building, '建物' %><br />
+    <%= f.text_field :address_building, autocomplete: "address_building" %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -34,6 +59,7 @@
   <div class="actions">
     <%= f.submit "Sign up",class: "btn btn-success" %>
   </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>
